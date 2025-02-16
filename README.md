@@ -39,7 +39,7 @@
 - 大模型： gpt-turbo-3.5, Qwen2.5-72B
 
 ### 输出报告示例
-[math_utils.py](example/math_utils.py.html)
+[math_utils.py](examples/math_utils.py.html)
 
 ## 使用方法
 1. 安装依赖
