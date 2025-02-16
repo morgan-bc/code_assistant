@@ -1,0 +1,122 @@
+start_line,end_line,type,code,suggestion,proposal
+179,182,表述过于简略或模糊/冗余重复,"def _strip_string(string: str) -> str:
+    """"""Source: https://github.com/hendrycks/math
+    Apply the reformatting helper functions above.
+    """"""
+    # linebreaks",建议对注释进行细化，明确说明 `_strip_string` 函数的具体作用，以及 `linebreaks` 注释的具体含义。例如，可以解释 `linebreaks` 是指处理字符串中的换行符。,"
+def _strip_string(string: str) -> str:
+    """"""Source: https://github.com/hendrycks/math
+    Apply the reformatting helper functions above to strip and normalize whitespace in the string.
+    """"""
+    # Remove line breaks and extra whitespace
+"
+184,184,"存在多处相似的注释, 冗余重复",    # print(string),建议删除这条注释，因为代码本身已经非常清晰，不需要额外的解释。,删除
+186,186,表述过于简略或模糊/与代码无关,"    # print(string)
+
+    # remove inverse spaces",建议明确注释的具体含义，并确保注释与实际代码逻辑相符。如果确实有移除特定空格的操作，可以在注释中详细说明。如果没有相关操作，可以考虑删除这条注释。,删除
+188,188,"存在多处相似的注释, 冗余重复","    # print(string)
+
+    # replace \\ with \
+    string = string.replace(""\\\\"", ""\\"")
+    # print(string)
+
+    # replace tfrac and dfrac with frac
+    string = string.replace(""tfrac"", ""frac"")
+    string = string.replace(""dfrac"", ""frac"")
+    # print(string)
+
+    # remove \left and \right
+    string = string.replace(""\\left"", """")
+    string = string.replace(""\\right"", """")
+    # print(string)
+
+    # Remove circ (degrees)
+    string = string.replace(""^{\\circ}"", """")
+    string = string.replace(""^\\circ"", """")","1. 删除所有 `# print(string)` 注释，因为它们没有实际的打印操作，且在最终版本中没有意义。
+2. 对于 `# replace \\ with \` 这样的注释，可以考虑合并成一个更具体的注释，说明这一系列操作的目的。","
+    # Replace escaped backslashes, standardize fraction commands, and remove unnecessary LaTeX commands
+
+    string = string.replace(""\\\\"", ""\\"")
+    string = string.replace(""tfrac"", ""frac"")
+    string = string.replace(""dfrac"", ""frac"")
+    string = string.replace(""\\left"", """")
+    string = string.replace(""\\right"", """")
+    string = string.replace(""^{\\circ}"", """")
+    string = string.replace(""^\\circ"", """")
+"
+190,190,与代码无关,"    # print(string)
+
+    # replace \\ with \
+    string = string.replace(""\\\\"", ""\\"")
+    # print(string)
+
+    # replace tfrac and dfrac with frac
+    string = string.replace(""tfrac"", ""frac"")
+    string = string.replace(""dfrac"", ""frac"")
+    # print(string)
+
+    # remove \left and \right
+    string = string.replace(""\\left"", """")
+    string = string.replace(""\\right"", """")
+    # print(string)
+
+    # Remove circ (degrees)
+    string = string.replace(""^{\\circ}"", """")
+    string = string.replace(""^\\circ"", """")",建议删除所有 `# print(string)` 注释，因为这些注释与实际代码逻辑无关，可能会误导读者。,删除
+192,192,"存在多处相似的注释, 冗余重复","    # print(string)
+
+    # replace tfrac and dfrac with frac
+    string = string.replace(""tfrac"", ""frac"")
+    string = string.replace(""dfrac"", ""frac"")
+    # print(string)
+
+    # remove \left and \right
+    string = string.replace(""\\left"", """")
+    string = string.replace(""\\right"", """")
+    # print(string)
+
+    # Remove circ (degrees)
+    string = string.replace(""^{\\circ}"", """")
+    string = string.replace(""^\\circ"", """")",建议删除 `# print(string)` 注释，或者如果这些 `print` 语句是为了调试目的而保留的，可以在注释中明确说明这一点。,删除
+197,197,"存在多处相似的注释, 冗余重复","    # print(string)
+
+    # remove \left and \right
+    string = string.replace(""\\left"", """")
+    string = string.replace(""\\right"", """")
+    # print(string)
+
+    # Remove circ (degrees)
+    string = string.replace(""^{\\circ}"", """")
+    string = string.replace(""^\\circ"", """")",建议删除两个 `# print(string)` 注释，因为这些注释是多余的，且对应的代码已经被注释掉了。,删除
+202,202,"存在多处相似的注释, 冗余重复","    # print(string)
+
+    # Remove circ (degrees)
+    string = string.replace(""^{\\circ}"", """")
+    string = string.replace(""^\\circ"", """")",建议删除 `# print(string)` 这行注释，因为它没有提供额外的信息，且与实际代码功能不符。对于 `# Remove circ (degrees)` 注释，可以保持不变。,删除
+204,204,表述过于简略或模糊,"    # print(string)
+
+    # Remove circ (degrees)
+    string = string.replace(""^{\\circ}"", """")
+    string = string.replace(""^\\circ"", """")",建议将注释修改为更加详细的描述，解释为什么需要移除这些符号以及这些符号的含义。例如：“移除表示度数的符号（如 ^{\circ} 或 ^\circ），以便后续处理。”,# 移除表示度数的符号（如 ^{\circ} 或 ^\circ），以便后续处理
+208,208,冗余重复,"    # remove dollar signs
+    string = string.replace(""\\$"", """")",建议删除该注释，因为代码本身已经非常清晰地表达了其行为。如果确实需要注释来提高代码的可读性，可以添加更详细的解释，例如为什么需要移除美元符号，或者这个操作在整个程序中的作用。,删除
+211,211,冗余重复,"    # remove units (on the right)
+    string = _remove_right_units(string)",可以考虑删除该注释，或者在注释中提供更多有价值的信息，例如说明 `_remove_right_units` 函数的具体行为或为什么需要移除右侧的单位。,删除
+214,214,表述过于简略或模糊,"    # remove percentage
+    string = string.replace(""\\%"", """")
+    string = string.replace(""%"", """")",建议将注释修改为更具体的描述，明确指出是移除字符串中的百分号。,# remove percent signs from the string
+235,235,冗余重复,"    # remove spaces
+    string = string.replace("" "", """")",可以考虑删除这条注释，因为代码本身已经足够清晰地表达了其功能。如果确实需要注释来增加代码的可读性，可以添加更具体的解释，例如为什么需要移除空格，或者移除空格后的用途。,删除
+243,243,表述过于简略或模糊,"    # manually change 0.5 --> \frac{1}{2}
+    if string == ""0.5"":
+        string = ""\\frac{1}{2}""",建议将注释修改为更清晰和准确的描述，明确说明这是通过代码自动完成的替换操作。,"# 将字符串 ""0.5"" 替换为 LaTeX 格式的分数表示 ""\frac{1}{2}"""
+247,247,表述过于简略或模糊,"    # NOTE: X/Y changed to \frac{X}{Y} in dataset, but in simple cases fix in case the model output is X/Y
+    string = _fix_a_slash_b(string)",建议更具体地说明为什么需要进行这种转换，以及 `_fix_a_slash_b` 函数的具体行为。同时，可以考虑简化或解释 LaTeX 格式的使用。,"# NOTE: The dataset uses LaTeX format for fractions (e.g., \frac{X}{Y}), but in simple cases, the model output is still in the form of X/Y. This function converts the string back to X/Y if necessary."
+288,288,过时失效,"def is_equiv_chain_of_thought(str1: str, str2: str) -> float:
+    """"""Strips the solution first before calling `is_equiv`.""""""
+    ans1 = get_answer(str1)
+    ans2 = get_answer(str2)",建议更新注释，使其准确描述当前代码的功能。可以说明该函数的作用是获取两个字符串的答案，并返回一个浮点数表示它们的相似度。,"
+""""""Gets the answers for two strings and returns a similarity score.""""""
+"
+338,338,"注释太短, 表述过于简略或模糊",    # voting,"建议增加具体的信息，说明 ""voting"" 的具体含义和用途。例如，可以描述这是投票系统的某一部分，或者具体说明该部分代码的功能。",# 投票系统中处理投票的部分
+342,342,冗余重复,    # check if the answer is correct,建议删除该注释，因为代码本身已经足够清晰地表达了其意图。如果需要进一步解释，可以在代码中添加具体的条件判断或逻辑说明，以增强代码的可读性。,删除

@@ -1,0 +1,5 @@
+pandas
+tabulate
+pygments
+openai
+scikit-learn

@@ -1,0 +1,17 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python 调试程序: 当前文件",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            // "args": ["-i", "D:/Github/autogen-0.2.38/autogen/math_utils.py", "-o", "output", "--num-workers", "1"]
+            "args": ["-i", "D:/Projects/aigc/test/src", "-o", "output", "--num-workers", "1"]
+        }
+    ]
+}

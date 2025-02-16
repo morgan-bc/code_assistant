@@ -1,0 +1,177 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>start_line</th>
+      <th>end_line</th>
+      <th>type</th>
+      <th>code</th>
+      <th>suggestion</th>
+      <th>proposal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>179</td>
+      <td>182</td>
+      <td>表述过于简略或模糊/冗余重复</td>
+      <td>def _strip_string(string: str) -> str:<br>    """Source: https://github.com/hendrycks/math<br>    Apply the reformatting helper functions above.<br>    """<br>    # linebreaks</td>
+      <td>建议对注释进行细化，明确说明 `_strip_string` 函数的具体作用，以及 `linebreaks` 注释的具体含义。例如，可以解释 `linebreaks` 是指处理字符串中的换行符。</td>
+      <td><br>def _strip_string(string: str) -> str:<br>    """Source: https://github.com/hendrycks/math<br>    Apply the reformatting helper functions above to strip and normalize whitespace in the string.<br>    """<br>    # Remove line breaks and extra whitespace<br></td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>184</td>
+      <td>184</td>
+      <td>存在多处相似的注释, 冗余重复</td>
+      <td># print(string)</td>
+      <td>建议删除这条注释，因为代码本身已经非常清晰，不需要额外的解释。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>186</td>
+      <td>186</td>
+      <td>表述过于简略或模糊/与代码无关</td>
+      <td># print(string)<br><br>    # remove inverse spaces</td>
+      <td>建议明确注释的具体含义，并确保注释与实际代码逻辑相符。如果确实有移除特定空格的操作，可以在注释中详细说明。如果没有相关操作，可以考虑删除这条注释。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>188</td>
+      <td>188</td>
+      <td>存在多处相似的注释, 冗余重复</td>
+      <td># print(string)<br><br>    # replace \\ with \<br>    string = string.replace("\\\\", "\\")<br>    # print(string)<br><br>    # replace tfrac and dfrac with frac<br>    string = string.replace("tfrac", "frac")<br>    string = string.replace("dfrac", "frac")<br>    # print(string)<br><br>    # remove \left and \right<br>    string = string.replace("\\left", "")<br>    string = string.replace("\\right", "")<br>    # print(string)<br><br>    # Remove circ (degrees)<br>    string = string.replace("^{\\circ}", "")<br>    string = string.replace("^\\circ", "")</td>
+      <td>1. 删除所有 `# print(string)` 注释，因为它们没有实际的打印操作，且在最终版本中没有意义。<br>2. 对于 `# replace \\ with \` 这样的注释，可以考虑合并成一个更具体的注释，说明这一系列操作的目的。</td>
+      <td><br>    # Replace escaped backslashes, standardize fraction commands, and remove unnecessary LaTeX commands<br><br>    string = string.replace("\\\\", "\\")<br>    string = string.replace("tfrac", "frac")<br>    string = string.replace("dfrac", "frac")<br>    string = string.replace("\\left", "")<br>    string = string.replace("\\right", "")<br>    string = string.replace("^{\\circ}", "")<br>    string = string.replace("^\\circ", "")<br></td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>190</td>
+      <td>190</td>
+      <td>与代码无关</td>
+      <td># print(string)<br><br>    # replace \\ with \<br>    string = string.replace("\\\\", "\\")<br>    # print(string)<br><br>    # replace tfrac and dfrac with frac<br>    string = string.replace("tfrac", "frac")<br>    string = string.replace("dfrac", "frac")<br>    # print(string)<br><br>    # remove \left and \right<br>    string = string.replace("\\left", "")<br>    string = string.replace("\\right", "")<br>    # print(string)<br><br>    # Remove circ (degrees)<br>    string = string.replace("^{\\circ}", "")<br>    string = string.replace("^\\circ", "")</td>
+      <td>建议删除所有 `# print(string)` 注释，因为这些注释与实际代码逻辑无关，可能会误导读者。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>192</td>
+      <td>192</td>
+      <td>存在多处相似的注释, 冗余重复</td>
+      <td># print(string)<br><br>    # replace tfrac and dfrac with frac<br>    string = string.replace("tfrac", "frac")<br>    string = string.replace("dfrac", "frac")<br>    # print(string)<br><br>    # remove \left and \right<br>    string = string.replace("\\left", "")<br>    string = string.replace("\\right", "")<br>    # print(string)<br><br>    # Remove circ (degrees)<br>    string = string.replace("^{\\circ}", "")<br>    string = string.replace("^\\circ", "")</td>
+      <td>建议删除 `# print(string)` 注释，或者如果这些 `print` 语句是为了调试目的而保留的，可以在注释中明确说明这一点。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>197</td>
+      <td>197</td>
+      <td>存在多处相似的注释, 冗余重复</td>
+      <td># print(string)<br><br>    # remove \left and \right<br>    string = string.replace("\\left", "")<br>    string = string.replace("\\right", "")<br>    # print(string)<br><br>    # Remove circ (degrees)<br>    string = string.replace("^{\\circ}", "")<br>    string = string.replace("^\\circ", "")</td>
+      <td>建议删除两个 `# print(string)` 注释，因为这些注释是多余的，且对应的代码已经被注释掉了。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>202</td>
+      <td>202</td>
+      <td>存在多处相似的注释, 冗余重复</td>
+      <td># print(string)<br><br>    # Remove circ (degrees)<br>    string = string.replace("^{\\circ}", "")<br>    string = string.replace("^\\circ", "")</td>
+      <td>建议删除 `# print(string)` 这行注释，因为它没有提供额外的信息，且与实际代码功能不符。对于 `# Remove circ (degrees)` 注释，可以保持不变。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>204</td>
+      <td>204</td>
+      <td>表述过于简略或模糊</td>
+      <td># print(string)<br><br>    # Remove circ (degrees)<br>    string = string.replace("^{\\circ}", "")<br>    string = string.replace("^\\circ", "")</td>
+      <td>建议将注释修改为更加详细的描述，解释为什么需要移除这些符号以及这些符号的含义。例如：“移除表示度数的符号（如 ^{\circ} 或 ^\circ），以便后续处理。”</td>
+      <td># 移除表示度数的符号（如 ^{\circ} 或 ^\circ），以便后续处理</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>208</td>
+      <td>208</td>
+      <td>冗余重复</td>
+      <td># remove dollar signs<br>    string = string.replace("\\$", "")</td>
+      <td>建议删除该注释，因为代码本身已经非常清晰地表达了其行为。如果确实需要注释来提高代码的可读性，可以添加更详细的解释，例如为什么需要移除美元符号，或者这个操作在整个程序中的作用。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>211</td>
+      <td>211</td>
+      <td>冗余重复</td>
+      <td># remove units (on the right)<br>    string = _remove_right_units(string)</td>
+      <td>可以考虑删除该注释，或者在注释中提供更多有价值的信息，例如说明 `_remove_right_units` 函数的具体行为或为什么需要移除右侧的单位。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>214</td>
+      <td>214</td>
+      <td>表述过于简略或模糊</td>
+      <td># remove percentage<br>    string = string.replace("\\%", "")<br>    string = string.replace("%", "")</td>
+      <td>建议将注释修改为更具体的描述，明确指出是移除字符串中的百分号。</td>
+      <td># remove percent signs from the string</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>235</td>
+      <td>235</td>
+      <td>冗余重复</td>
+      <td># remove spaces<br>    string = string.replace(" ", "")</td>
+      <td>可以考虑删除这条注释，因为代码本身已经足够清晰地表达了其功能。如果确实需要注释来增加代码的可读性，可以添加更具体的解释，例如为什么需要移除空格，或者移除空格后的用途。</td>
+      <td>删除</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>243</td>
+      <td>243</td>
+      <td>表述过于简略或模糊</td>
+      <td># manually change 0.5 --> \frac{1}{2}<br>    if string == "0.5":<br>        string = "\\frac{1}{2}"</td>
+      <td>建议将注释修改为更清晰和准确的描述，明确说明这是通过代码自动完成的替换操作。</td>
+      <td># 将字符串 "0.5" 替换为 LaTeX 格式的分数表示 "\frac{1}{2}"</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>247</td>
+      <td>247</td>
+      <td>表述过于简略或模糊</td>
+      <td># NOTE: X/Y changed to \frac{X}{Y} in dataset, but in simple cases fix in case the model output is X/Y<br>    string = _fix_a_slash_b(string)</td>
+      <td>建议更具体地说明为什么需要进行这种转换，以及 `_fix_a_slash_b` 函数的具体行为。同时，可以考虑简化或解释 LaTeX 格式的使用。</td>
+      <td># NOTE: The dataset uses LaTeX format for fractions (e.g., \frac{X}{Y}), but in simple cases, the model output is still in the form of X/Y. This function converts the string back to X/Y if necessary.</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>288</td>
+      <td>288</td>
+      <td>过时失效</td>
+      <td>def is_equiv_chain_of_thought(str1: str, str2: str) -> float:<br>    """Strips the solution first before calling `is_equiv`."""<br>    ans1 = get_answer(str1)<br>    ans2 = get_answer(str2)</td>
+      <td>建议更新注释，使其准确描述当前代码的功能。可以说明该函数的作用是获取两个字符串的答案，并返回一个浮点数表示它们的相似度。</td>
+      <td><br>"""Gets the answers for two strings and returns a similarity score."""<br></td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>338</td>
+      <td>338</td>
+      <td>注释太短, 表述过于简略或模糊</td>
+      <td># voting</td>
+      <td>建议增加具体的信息，说明 "voting" 的具体含义和用途。例如，可以描述这是投票系统的某一部分，或者具体说明该部分代码的功能。</td>
+      <td># 投票系统中处理投票的部分</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>342</td>
+      <td>342</td>
+      <td>冗余重复</td>
+      <td># check if the answer is correct</td>
+      <td>建议删除该注释，因为代码本身已经足够清晰地表达了其意图。如果需要进一步解释，可以在代码中添加具体的条件判断或逻辑说明，以增强代码的可读性。</td>
+      <td>删除</td>
+    </tr>
+  </tbody>
+</table>
